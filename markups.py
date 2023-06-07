@@ -1,6 +1,6 @@
 from aiogram import types
 import buttons
-import naxApi
+import api_requests
 
 def getStartMarkup():
 	keyboard_markup = types.InlineKeyboardMarkup(row_width=9)
@@ -20,7 +20,7 @@ def getStartMarkup():
 	keyboard_markup.add(buttons.gitHubButton)
 	return keyboard_markup
 
-def getPaginationMarkup(content:naxApi.Content):
+def getPaginationMarkup(content : api_requests.Content):
 	keyboard_markup = types.InlineKeyboardMarkup(row_width=3)
 
 	buttons_arr = buttons.getPaginationButtons(content)

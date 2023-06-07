@@ -1,30 +1,30 @@
 from aiogram import Bot, Dispatcher, executor, types
 import markups
-import naxApi
+import api_requests
 import buttons
 from dotenv import load_dotenv
 import os
 from aiogram.types import InputMediaPhoto
 
 load_dotenv()
-# API_TOKEN = os.getenv('API_TOKEN')
-API_TOKEN = '5913877491:AAEoeG0OpZr9h-XrTSGa3TnAr-Du_ajxZiI'
-
+API_TOKEN = os.getenv('API_TOKEN')
+# API_TOKEN = 'your bot-token'
 bot = Bot(token=API_TOKEN,parse_mode="HTML")
-nax = naxApi.Nax()
+fusion = api_requests.Request()
 dp = Dispatcher(bot)
 
 
 @dp.message_handler(commands='start')
 async def start_cmd_handler(message: types.Message):
-	# await message.answer("Pick source", reply_markup = markups.getStartMarkup() )
-	await message.answer_photo(caption="Pick source",photo = "https://www.verywellhealth.com/thmb/byKanhPiJ0kC3WLttQV_wVaf4yE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/What-are-the-three-levels-of-autism-260233-5baab02fc9e77c002c390bd2.png", reply_markup=markups.getStartMarkup())
+	await message.answer_photo(caption="Pick source",
+							   photo = "https://e7.pngegg.com/pngimages/471/782/png-clipart-software-testing-beta-tester-computer-software-api-testing-roblox-others-emblem-service-thumbnail.png",
+							   reply_markup=markups.getStartMarkup())
 
 
 @dp.callback_query_handler(buttons.source_callback.filter())
 async def inline_kb_answer_callback_handler(query: types.CallbackQuery, callback_data:dict):
-	content = nax.GetLastContentBySource(callback_data["src"])
-	text = nax.GetTextForTelegramMessage(content)
+	content = fusion.GetLastContentBySource(callback_data["src"])
+	text = fusion.GetTextForTelegramMessage(content)
 
 	if "photo" in query.message:
 		if content.ImageUrl:
@@ -56,11 +56,11 @@ async def inline_kb_answer_callback_handler(query: types.CallbackQuery):
 
 @dp.callback_query_handler(buttons.next_post.filter())
 async def next_callback_handler(query: types.CallbackQuery, callback_data: dict):
-	content = nax.GetNextContent(callback_data["id"])
+	content = fusion.GetNextContent(callback_data["id"])
 	if not content:
 		await query.answer("No more content")
 		return
-	text = nax.GetTextForTelegramMessage(content)
+	text = fusion.GetTextForTelegramMessage(content)
 
 	if "photo" in query.message:
 		if content.ImageUrl:
@@ -82,8 +82,8 @@ async def next_callback_handler(query: types.CallbackQuery, callback_data: dict)
 
 @dp.callback_query_handler(buttons.prev_post.filter())
 async def prev_callback_handler(query: types.CallbackQuery, callback_data: dict):
-	content = nax.GetPreviousContent(callback_data["id"])
-	text = nax.GetTextForTelegramMessage(content)
+	content = fusion.GetPreviousContent(callback_data["id"])
+	text = fusion.GetTextForTelegramMessage(content)
 	if "photo" in query.message:
 		if content.ImageUrl:
 			media = InputMediaPhoto(media=content.ImageUrl, caption=text)

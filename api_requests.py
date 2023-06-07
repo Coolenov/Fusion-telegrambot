@@ -23,10 +23,10 @@ class Source:
     name:str
 
 
-class Nax:
+class Request:
     def __init__(self):
         self.session = requests.Session()
-        self.baseUrl = "http://127.0.0.1:10000"
+        self.baseUrl = "http://fusionapi:10000" # fusionapi - docker container name with Fusion-api
     
     def _formPublishingTime(self, timeStamp:int)->datetime:
         return datetime.datetime.fromtimestamp(timeStamp)
