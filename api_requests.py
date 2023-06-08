@@ -14,9 +14,9 @@ class Content:
     Title:              str
     Link:               str
     Description:        str
-    ImageUrl:          str
+    ImageUrl:           str
     Source:             str
-    PublishingTime:    int
+    PublishingTime:     int
 
 @dataclass
 class Source:
