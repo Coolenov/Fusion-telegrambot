@@ -8,7 +8,7 @@ from aiogram.types import InputMediaPhoto
 
 load_dotenv()
 # API_TOKEN = os.getenv('API_TOKEN')
-API_TOKEN = '6241788210:AAHr2tzLuD1aGQChDWqnyau_pjnC6WD7FyA'
+API_TOKEN = '5913877491:AAEoeG0OpZr9h-XrTSGa3TnAr-Du_ajxZiI'
 bot = Bot(token=API_TOKEN,parse_mode="HTML")
 fusion = api_requests.Request()
 dp = Dispatcher(bot)
