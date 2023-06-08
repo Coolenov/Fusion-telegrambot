@@ -32,7 +32,7 @@ async def inline_kb_answer_callback_handler(query: types.CallbackQuery, callback
 			
 		else:
 			await query.message.delete()
-			await query.message.answer(text,reply_markup=markups.getPaginationMarkup(content))
+			await query.message.answer(text, reply_markup=markups.getPaginationMarkup(content))
 		
 	else:
 		if content.ImageUrl:
@@ -68,7 +68,7 @@ async def next_callback_handler(query: types.CallbackQuery, callback_data: dict)
 			
 		else:
 			await query.message.delete()
-			await query.message.answer(text,reply_markup=markups.getPaginationMarkup(content))
+			await query.message.answer(text, reply_markup=markups.getPaginationMarkup(content))
 		
 	else:
 		if content.ImageUrl:
@@ -90,7 +90,7 @@ async def prev_callback_handler(query: types.CallbackQuery, callback_data: dict)
 			
 		else:
 			await query.message.delete()
-			await query.message.answer(text,reply_markup=markups.getPaginationMarkup(content))
+			await query.message.answer(text, reply_markup=markups.getPaginationMarkup(content))
 		
 	else:
 		if content.ImageUrl:
