@@ -1,5 +1,5 @@
 from aiogram import types
-from app import api_requests, buttons
+import api_requests, buttons
 
 
 def getStartMarkup():
