@@ -1,5 +1,5 @@
 from aiogram import types
-from app import api_requests
+import api_requests
 from aiogram.utils.callback_data import CallbackData
 
 fusion = api_requests.Request()

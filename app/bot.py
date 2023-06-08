@@ -1,6 +1,6 @@
 from aiogram import Bot, Dispatcher, executor, types
 import markups
-from app import api_requests
+import api_requests
 import buttons
 from dotenv import load_dotenv
 from aiogram.types import InputMediaPhoto
