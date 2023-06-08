@@ -1,5 +1,5 @@
 from aiogram import types
-import api_requests
+from app import api_requests
 from aiogram.utils.callback_data import CallbackData
 
 fusion = api_requests.Request()
@@ -21,14 +21,14 @@ def getStartButtons():
 	
 	return buttons_arr
 
-def getPaginationButtons(content:api_requests.Content):
+def getPaginationButtons(content: api_requests.Content):
 	next_button = types.InlineKeyboardButton(text = 'Next post', callback_data=next_post.new(id = content.Id))
 	prev_button = types.InlineKeyboardButton(text = 'Previous post', callback_data=prev_post.new(id = content.Id))
 	buttons_arr = [prev_button,next_button]
 	
 	return buttons_arr
 
-def getSourceLinkButton(content:api_requests.Content):
+def getSourceLinkButton(content: api_requests.Content):
 	return types.InlineKeyboardButton(text = "Read more..", url = content.Link)
 
 def getMainMenuButton():

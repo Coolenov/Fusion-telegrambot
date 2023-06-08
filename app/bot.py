@@ -1,9 +1,8 @@
 from aiogram import Bot, Dispatcher, executor, types
 import markups
-import api_requests
+from app import api_requests
 import buttons
 from dotenv import load_dotenv
-import os
 from aiogram.types import InputMediaPhoto
 
 load_dotenv()
@@ -16,7 +15,7 @@ dp = Dispatcher(bot)
 
 @dp.message_handler(commands='start')
 async def start_cmd_handler(message: types.Message):
-	await message.answer_photo(caption="Pick source",
+	await message.answer_photo(caption="Сhoose an interesting resource.",
 							   photo = "https://e7.pngegg.com/pngimages/471/782/png-clipart-software-testing-beta-tester-computer-software-api-testing-roblox-others-emblem-service-thumbnail.png",
 							   reply_markup=markups.getStartMarkup())
 

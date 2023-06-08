@@ -8,7 +8,7 @@ COPY . .
 RUN pip install aiogram requests python-dotenv
 
 
-CMD ["python","bot.py"]
+CMD ["python","/app/bot.py"]
 
 
 

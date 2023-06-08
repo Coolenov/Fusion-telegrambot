@@ -1,6 +1,6 @@
 from aiogram import types
-import buttons
-import api_requests
+from app import api_requests, buttons
+
 
 def getStartMarkup():
 	keyboard_markup = types.InlineKeyboardMarkup(row_width=9)
